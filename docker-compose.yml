@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  app:
+    image: app:latest
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    tty: true
+    ports:
+      - 19000:19000
+      - 19001:19001
+      - 19002:19002
+      - 19006:19006
+    environment:
+      - NODE_ENV=development
+      - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.1.10
+    volumes:
+      - ./app:/app/
